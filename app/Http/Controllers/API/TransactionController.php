@@ -14,7 +14,6 @@ use App\Models\Transaction;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Validator;
-
 class TransactionController extends Controller
 {
     /**
