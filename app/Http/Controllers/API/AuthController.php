@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Transaction;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Validator;
@@ -140,6 +141,10 @@ class AuthController extends Controller
         $user = auth()->user();
         foreach ($user as $sku){ 
             $id_user = $user->id_user;
+        }
+        $transFind = Transaction::where('id_user_transaction', $id_user)->get();
+        foreach ($transFind as $sku){ 
+            $sku->delete();
         }
         $userFind = User::find($id_user)->delete();
         auth()->logout();
